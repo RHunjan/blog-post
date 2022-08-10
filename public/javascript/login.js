@@ -42,13 +42,13 @@ async function loginFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard/');
-      console.log('test');
+      document.location.replace('/');
     } else {
       alert(response.statusText);
     }
   }
 }
 
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
