@@ -5,21 +5,20 @@
   </h2>
   <form class="edit-post-form">
     <div>
-      <div>
-       <label for="post-title">Title</label>
-      <input name="post-title" type="text" value="{{post.title}}" />
+        <div>
+          <label for="post-title">Title:</label>
+         <input name="post-title" type="text" value="{{post.title}}" />
       </div>
       <div>
-         <label for="post-content">Content</label>
-      <input name="post-content" type="text" value="{{post.post_content}}" />
+         <label for="post-content">Content:</label>
+      <textarea id="post-content" name="post-content" rows="4" cols="50"></textarea>
       </div>
-  
-      
+     
     </div>
     <div>
-      Created on {{format_date post.created_at}}
+    Created on {{format_date post.created_at}}
       |
-      <a href="/post/{{post.id}}">{{post.comments.length}} {{post.comments.length}}</a>
+      <a href="/post/{{post.id}}"> {{post.comments.length}} Comment(s) </a>
     </div>
     <button type="submit">Save post</button>
     <button type="button" class="delete-post-btn">Delete post</button>
@@ -37,3 +36,7 @@
 </form>
 
 {{> comments post.comments}}
+
+<script src="/javascript/edit-post.js"></script>
+<script src="/javascript/delete-post.js"></script>
+<script src="/javascript/comment.js"></script>
