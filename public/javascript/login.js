@@ -43,6 +43,7 @@ async function loginFormHandler(event) {
 
     if (response.ok) {
       document.location.replace('/dashboard');
+      console.log('test');
     } else {
       alert(response.statusText);
     }

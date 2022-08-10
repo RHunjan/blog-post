@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // GET /api/users
 router.get('/', (req, res) => {
@@ -16,7 +17,7 @@ router.get('/', (req, res) => {
 // GET /api/users/1
 router.get('/:id', (req, res) => {
     User.findOne({
-   // attributes: { exclude: ['password'] },
+    attributes: { exclude: ['password'] },
     where: {
       id: req.params.id
     },
@@ -49,7 +50,7 @@ router.get('/:id', (req, res) => {
 });
 
 // POST /api/users
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     User.create({
     username: req.body.username,
     email: req.body.email,
@@ -116,7 +117,7 @@ router.post('/logout', (req, res) => {
 
 
 // PUT /api/users/1
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     User.update(req.body, {
     individualHooks: true,
     where: {
